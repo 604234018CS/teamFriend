@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BookRestProvider } from '../providers/book-rest/book-rest';
+import { FriendrestProvider } from '../providers/friendrest/friendrest';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BookRestProvider } from '../providers/book-rest/book-rest';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BookRestProvider
+    BookRestProvider,
+    FriendrestProvider
   ]
 })
 export class AppModule {}
