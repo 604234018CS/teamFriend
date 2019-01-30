@@ -1,6 +1,6 @@
 import { BookdetailPage } from './../pages/bookdetail/bookdetail';
 import { HttpClientModule } from '@angular/common/http';
-import { BookListPage } from './../pages/book-list/book-list';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -9,15 +9,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { BookRestProvider } from '../providers/book-rest/book-rest';
 import { FriendrestProvider } from '../providers/friendrest/friendrest';
+import { FrienddeteilPage } from '../pages/frienddeteil/frienddeteil';
+import { FriendlistPage } from '../pages/friendlist/friendlist';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    BookListPage,
-    BookdetailPage
+    FriendlistPage,
+    FrienddeteilPage,
+    FriendlistPage
   ],
   imports: [
     HttpClientModule,
@@ -28,14 +30,15 @@ import { FriendrestProvider } from '../providers/friendrest/friendrest';
   entryComponents: [
     MyApp,
     HomePage,
-    BookListPage,
-    BookdetailPage
+    FrienddeteilPage,
+    FriendlistPage,
+    FrienddeteilPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BookRestProvider,
+    FriendrestProvider,
     FriendrestProvider
   ]
 })

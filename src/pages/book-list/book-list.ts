@@ -1,40 +1,42 @@
-import { BookdetailPage } from './../bookdetail/bookdetail';
-import { BookRestProvider } from './../../providers/book-rest/book-rest';
+import { FriendDetailpage, } from './../frienddetail/frienddetail';
+import { FriendrestProvider, } from './../../providers/friendrest/friendrest';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Book } from '../../models/book.model';
+import { Friend } from '../../models/friend.model';
+import { FriendrestProvider } from '../../providers/friendrest/friendrest';
+import { FrienddeteilPage } from '../frienddeteil/frienddeteil';
 
 
 
 @Component({
-  selector: 'page-book-list',
-  templateUrl: 'book-list.html',
+  selector: 'page-friend-list',
+  templateUrl: 'friend-list.html',
 })
-export class BookListPage {
+export class FriendListPage {
 
-  books:Book;
-  category:string;
+  friend:Friend;
+  classroom:string;
 
-  constructor(private bookrest:BookRestProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private friendrest:FriendRestProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillEnter(){
-    this.category=this.navParams.get("category");
-    this.bookrest.getbookList().subscribe(data=>{
-      this.books=data.filter(book => book.category === this.category);
+    this.classroom=this.navParams.get("classroom");
+    this.friendrest.getfriendList().subscribe(data=>{
+      this.friend=data.filter(Friend => Friend.category === this.classroom);
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BookListPage');
+    console.log('ionViewDidLoad FriendListPage');
   }
   goBack(){
     this.navCtrl.pop();
   }
 
-  showDetail(bookid:number){
-    this.navCtrl.push(BookdetailPage,
-      {bookid:bookid}
+  showDetail(studentid:number){
+    this.navCtrl.push(FrienddeteilPage,
+      {studentid:studentid}
     );
   }
 
