@@ -1,6 +1,7 @@
-import { FriendListPage } from './../book-list/book-list';
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { FriendlistPage } from '../friendlist/friendlist';
 
 @Component({
   selector: 'page-home',
@@ -12,9 +13,9 @@ export class HomePage {
 
   }
 
-  showFriendList(categoryName:string){
-    this.navCtrl.push(FriendListPage,
-      {category:categoryName}
+  showFriendList(classRoom:string){
+    this.navCtrl.push(FriendlistPage,
+      {classroom:classRoom}
       );
   }
 

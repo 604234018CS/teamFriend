@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Friend } from '../../models/friend.model';
+import { FriendrestProvider } from '../../providers/friendrest/friendrest';
 
 /**
  * Generated class for the FrienddeteilPage page.
@@ -14,11 +16,28 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FrienddeteilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  studentid:number;
+  Friend:Friend;
+  
+
+  constructor(public friendrest:FriendrestProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  ionViewWillEnter(){
+    this.studentid=this.navParams.get("studentid");
+    this.friendrest.getfriendList().subscribe(data=>{
+      this.Friend=data.filter(friend => friend.studentid === this.studentid)[0];
+    })
+  }
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FrienddeteilPage');
+    this.studentid=this.navParams.get("studentid");
+    console.log(this.studentid);
+  }
+
+  goBack(){
+    this.navCtrl.pop();
   }
 
 }

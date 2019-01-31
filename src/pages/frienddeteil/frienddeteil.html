@@ -1,18 +1,48 @@
-<!--
-  Generated template for the FrienddeteilPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>frienddeteil</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+      <ion-title>Friend Detail</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
 
-</ion-header>
+      <ion-grid style="height: 100%" >
+          <ion-row justify-content-center align-items-center style="height: 100%" *ngIf="Friend">
+    
+                <img  height="200px" src="{{ Friend.picture }}" />
+        
+                <ion-list >
+                    <ion-item>                
+                        <strong>Firstname:</strong>  {{ Friend.firstName }}     
+                    </ion-item>
+                  <ion-item>                
+                      <strong>LastName:</strong>  {{ Friend.lastName }}  
+                  </ion-item>
+  
+                  <ion-item>                
+                      <strong>nickName:</strong>   {{ Friend.nickName }}       
+                    </ion-item>
+  
+                    <ion-item>                
+                        <strong>faculty:</strong>  {{ Friend.faculty}}
+                    </ion-item>
+                    <ion-item>                
+                          <strong>major:</strong>  {{ Friend.major }}  
+                    </ion-item>
 
-
-<ion-content padding>
-
-</ion-content>
+                    <ion-item >                
+                        <strong>birthday:</strong>  {{ Friend.birthday }}  
+                  </ion-item> 
+                   
+                  
+                </ion-list>
+                
+                <button ion-button full color="danger" (click)="goBack()">
+                  Back
+                </button>
+  </ion-row>
+  </ion-grid>
+  </ion-content>

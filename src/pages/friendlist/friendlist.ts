@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FrienddeteilPage } from '../frienddeteil/frienddeteil';
+import { FriendrestProvider } from '../../providers/friendrest/friendrest';
+import { Friend } from '../../models/friend.model';
 
-/**
- * Generated class for the FriendlistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-friendlist',
@@ -15,12 +11,16 @@ import { FrienddeteilPage } from '../frienddeteil/frienddeteil';
 })
 export class FriendlistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  Friends:Friend;
+  classroom:string;
+
+  constructor(public friendrest:FriendrestProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
+
   ionViewWillEnter(){
     this.classroom=this.navParams.get("classroom");
     this.friendrest.getfriendList().subscribe(data=>{
-      this.friend=data.filter(friend => friend.classroom === this.classroom);
+      this.Friends=data.filter(friends => friends.classroom === this.classroom);
     });
   }
 
