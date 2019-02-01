@@ -1,5 +1,5 @@
 export interface Friend {
-    studentID: number;
+    studentid: number;
     firstName: string;
     lastName: string;
     nickName: string;

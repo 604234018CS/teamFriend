@@ -17,25 +17,27 @@ import { FriendrestProvider } from '../../providers/friendrest/friendrest';
 export class FrienddeteilPage {
 
   studentid:number;
-  Friend:Friend;
+  friend:Friend;
   
 
-  constructor(public friendrest:FriendrestProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public friendrest:FriendrestProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
+
+  
 
   ionViewWillEnter(){
     this.studentid=this.navParams.get("studentid");
     this.friendrest.getfriendList().subscribe(data=>{
-      this.Friend=data.filter(friend => friend.studentid === this.studentid)[0];
+      this.friend=data.filter(friend => friend.studentid === this.studentid)[0];
     })
-  }
 
+  }
 
   ionViewDidLoad() {
     this.studentid=this.navParams.get("studentid");
     console.log(this.studentid);
+    
   }
-
   goBack(){
     this.navCtrl.pop();
   }
